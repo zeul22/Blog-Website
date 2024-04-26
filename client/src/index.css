@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.bg-primary-1{
+  background: #0C0C0C;
+}
+.bg-primary-2{
+  background: #9B3922;
+}
+.bg-primary-3{
+  background-color: #F2613F;
+}
+
+.color1{
+  font: #0C0C0C;
+}
+
+.color2{
+  font: #9B3922;
+}
+.color3{
+  font: #F2613F;
+}
