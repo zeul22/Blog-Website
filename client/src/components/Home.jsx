@@ -1,5 +1,6 @@
 import React from "react";
 import { circIn, circInOut, motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const blog = [
   "#WebDesign",
@@ -25,13 +26,16 @@ const blog = [
 ];
 const Home = () => {
   return (
-    <div className=" border-t border-zinc-800 w-[100vw] bg-primary-2
+    <div
+      id="1"
+      className=" border-t border-zinc-800 w-full bg-primary-3
     max-sm:h-[67vh]
     sm:h-[80vh]
     md:h-[77vh]
     lg:h-[74vh]
 
-    ">
+    "
+    >
       <div className=" mt-0 flex flex-col justify-center gap-4">
         <div>
           <motion.div
@@ -51,15 +55,16 @@ const Home = () => {
             "
           ></motion.div>
           <div
-            className="font-extralight tracking-tighter mt-[5vh] ml-[5vw]  items-center text-xs
+            className="font-extralight tracking-tighter mt-[5vh] ml-[5vw] 
+             items-center text-xs 
             xs:text-xl
-            max-sm:text-5xl 
+            max-sm:text-[12vw] 
             sm:text-9xl
-            md:text-8xl md:flex
+            md:text-[10vw] md:flex
             lg:text-8xl lg:flex
             "
           >
-            You Decide
+            <div className="max-sm:mb-[5vh]">You Decide</div>
             <div>
               Your {"  "}
               <motion.span
@@ -76,7 +81,8 @@ const Home = () => {
 
         {/* Text  */}
         <div
-          className="flex justify-center gap-1 font-extralight tracking-tighter items-center absolute right-[2.5vw] 
+          className="flex justify-center gap-1 font-extralight 
+          tracking-tighter items-center absolute right-[2.5vw] shadow-xl 
           xs:text-xl 
           max-sm:text-3xl max-sm:top-[25vh]
           sm:text-4xl sm:top-[43vh]
@@ -145,13 +151,47 @@ const Home = () => {
         lg:hidden "
       >
         <button className="p-5 flex items-center justify-center rounded-full bg-orange-600 hover:bg-orange-500 transition-all duration-200 hover:text-white">
-          Write Yours
+          <Link to="/login">Write Yours</Link>
+        </button>
+      </div>
+      <div
+        className="justify-center mt-[4.5vh] -mb-[8vh] tracking-tighter font-extralight cursor-pointer
+        xs:text-xl
+        max-sm:hidden 
+        sm:flex
+        xl:hidden "
+      >
+        <button className="p-5 flex items-center justify-center rounded-full bg-orange-600 hover:bg-orange-500 transition-all duration-200 hover:text-white">
+          <Link to="/login">Write Yours</Link>
         </button>
       </div>
       {/* Images  Animation */}
-      <div className="flex overflow-hidden  mb-[10vh]">
+      <div className="flex overflow-hidden gap-4 mb-[10vh]">
         <div
-          className="flex justify-center gap-12 font-extralight mb-[4vh]
+          className="flex justify-center gap-4 font-extralight mb-[4vh]
+          xs:text-xl
+          sm:mt-[15vh]
+          max-sm:mt-[19vh]
+          md:mt-[19vh]
+          lg:mt-[14vh] 
+          animate-loop-scroll
+      "
+        >
+          {blog.map((item, index) => (
+            <div
+              key={index}
+              className=" bg-[url('https://source.unsplash.com/random')] bg-cover bg-center rounded-md shadow-xl 
+              xs:h-[10vh] max-xs:w-[10vw]
+              max-sm:h-[20vh] max-sm:w-[40vw]
+              sm:h-[30vh] sm:w-[40vw]
+              md:h-[25vh] md:w-[25vw]
+              lg:h-[30vh] max-md:w-[30vw]
+              "
+            ></div>
+          ))}
+        </div>
+        <div
+          className="flex justify-center gap-4 font-extralight mb-[4vh]
           xs:text-xl
           sm:mt-[15vh]
           max-sm:mt-[19vh]

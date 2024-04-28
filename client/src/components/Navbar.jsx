@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import Login from "./Login";
 const Navbar = () => {
   const [isHovered, setIsHovered] = useState(false);
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
 
   return (
-    <div>
-      <div className="nav h-[6.5vh] items-center flex justify-between max-sm:justify-center sticky p-4 font-semibold bg-primary-1 text-[#F2613F]">
+    <div className="sticky top-0 z-[999] w-full">
+      <div className="nav h-[6.5vh] items-center flex justify-between max-sm:justify-center p-4 font-semibold bg-primary-1 text-[#F2613F]">
         <div
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
@@ -15,11 +17,11 @@ const Navbar = () => {
         >
           <div
             className="absolute bg-orange-500 rounded-full p-5
-            max-sm:h-[3.5vh] max-sm:w-[4.5vw]
-            max-md:h-[4.5vh] max-md:w-[4.5vw]
-            md:h-[4.5vh] md:w-[3.5vw]
-            lg:h-[4.5vh] lg:w-[3vw]
-            xl:h-[4vh] xl:w-[2vw]
+            max-sm:h-[3.5vh] max-sm:w-[3.5vh]
+            max-md:h-[4.5vh] max-md:w-[4.5vh]
+            md:h-[4.5vh] md:w-[4.5vh]
+            lg:h-[4.5vh] lg:w-[4.5vh]
+            xl:h-[4vh] xl:w-[4vh]
             "
           >
             <motion.div
@@ -27,11 +29,11 @@ const Navbar = () => {
               whileHover={{ y: -50 }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
               className="relative bg-orange-200 rounded-full
-           max-sm:h-[2.5vh] max-sm:w-[4.5vw] max-sm:right-3 max-sm:bottom-3 
-           max-md:h-[3.5vh] max-md:w-[4.5vw] max-md:right-[15px] max-md:bottom-[16px]
-           md:h-[3.5vh] md:w-[3.5vw] md:right-[15.5px] md:bottom-[16px]
-           lg:h-[3.5vh] lg:w-[3vw] lg:right-[17px] lg:bottom-[16px]
-           xl:h-[3.vh] xl:w-[1.8vw] xl:right-[17.2px] xl:bottom-[16.5px] "
+           max-sm:h-[2.5vh] max-sm:w-[2.5vh] max-sm:right-3 max-sm:bottom-3 
+           max-md:h-[3.5vh] max-md:w-[3.5vh] max-md:right-[15px] max-md:bottom-[16px]
+           md:h-[3.5vh] md:w-[3.5vh] md:right-[15.5px] md:bottom-[16px]
+           lg:h-[3.5vh] lg:w-[3.5vh] lg:right-[17px] lg:bottom-[16px]
+           xl:h-[3vh] xl:w-[3vh] xl:right-[14.5px] xl:bottom-[15px] "
             ></motion.div>
           </div>
           <motion.div
@@ -40,7 +42,7 @@ const Navbar = () => {
             transition={{ duration: 1 }}
             className="text-white"
           >
-            FLIP!
+            <Link to="/">MAKEURSTORY</Link>
           </motion.div>
         </div>
         <motion.div
@@ -49,15 +51,19 @@ const Navbar = () => {
           transition={{ duration: 0.8, staggerChildren: 0.3 }}
           className="flex max-sm:hidden gap-3  "
         >
-          {["Home", "Benefits", "Work", "Pricing", "FAQs", "About"].map(
-            (item, index) => (
-              <motion.div transition={{ staggerChildren: 0.4 }} key={index}>
-                {item}
-              </motion.div>
-            )
-          )}
+          {["Home", "About", "FAQs", "Testimonials"].map((item, index) => (
+            <motion.div
+              className="tracking-wider uppercase cursor-pointer"
+              transition={{ staggerChildren: 0.4 }}
+              key={index}
+            >
+              <Link to={`/#${index + 1}`}>{item}</Link>
+            </motion.div>
+          ))}
         </motion.div>
-        <div className="hidden xl:flex">LOG IN</div>
+        <div className="hidden xl:flex cursor-pointer">
+          <Link to={`/login`}>LOG IN</Link>
+        </div>
       </div>
     </div>
   );
