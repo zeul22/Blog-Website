@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 const Login = () => {
   const default_data = {
@@ -51,7 +52,7 @@ const Login = () => {
           console.error("Fetching Error: ", error);
         });
     } else {
-      alert("Please complete the whole procedure");
+      toast("Please fill all the details to register");
     }
   };
   return (
@@ -148,7 +149,7 @@ const Login = () => {
         </div>
         <div className="text-sm font-extralight mt-2">
           Already a user?{" "}
-          <span className="cursor-pointer">
+          <span className="cursor-pointer text-red-500 font-bold">
             <Link to="/login">Click Here</Link>
           </span>{" "}
         </div>

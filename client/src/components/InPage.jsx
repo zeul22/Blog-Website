@@ -6,8 +6,10 @@ import Footer from "./Footer";
 import About from "./About";
 import FAQ from "./FAQ";
 import { Link as LinkScroll } from "react-scroll/modules";
+import { useAuth } from "../store/auth";
 
 const InPage = () => {
+  const { token } = useAuth();
   const faqData = [
     {
       question: "How do I sign up to write a blog?",
@@ -65,10 +67,15 @@ const InPage = () => {
 
   return (
     <>
-        <Home />
-        <About />
-        <FAQ faqData={faqData} />
-        <Footer />
+      {!token && (
+        <>
+          <Home />
+          <About />
+          <FAQ faqData={faqData} />
+          <Footer />
+        </>
+      )}
+      {token && <div>CREATE SOMETHING HERE</div>}
     </>
   );
 };

@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useAuth } from "../store/auth";
 import Login from "./Login";
+
 const Navbar = () => {
   const [isHovered, setIsHovered] = useState(false);
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
+  const { isloggedin, setToken, setauthUser } = useAuth();
 
   return (
     <div className="sticky top-0 z-[999] w-full">
@@ -61,9 +64,27 @@ const Navbar = () => {
             </motion.div>
           ))}
         </motion.div>
-        <div className="hidden xl:flex cursor-pointer">
-          <Link to={`/login`}>LOG IN</Link>
-        </div>
+
+        {!isloggedin ? (
+          <div className="hidden xl:flex cursor-pointer">
+            <Link to={`/login`}>LOG IN</Link>
+          </div>
+        ) : (
+          <div className="hidden xl:flex cursor-pointer">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                setToken(null);
+                setauthUser(null);
+                localStorage.removeItem("accessToken");
+                localStorage.removeItem("authUser");
+                localStorage.removeItem("authDetails");
+              }}
+            >
+              LOGOUT
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
