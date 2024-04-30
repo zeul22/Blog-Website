@@ -19,9 +19,10 @@ app.use(cookieParser());
 
 import userRouter from "./routes/user.routes.js";
 import contactPageRouter from "./routes/contactPage.routes.js";
-
+import blogRouter from "./routes/blog.routes.js";
 app.use("/contact", contactPageRouter);
 
 app.use("/users", userRouter);
 
+app.use("/blogs", blogRouter);
 export { app };

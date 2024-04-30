@@ -7,7 +7,7 @@ import About from "./About";
 import FAQ from "./FAQ";
 import { Link as LinkScroll } from "react-scroll/modules";
 import { useAuth } from "../store/auth";
-
+import ProtectedHome from "./Protected/ProtectedHome";
 const InPage = () => {
   const { token } = useAuth();
   const faqData = [
@@ -75,7 +75,11 @@ const InPage = () => {
           <Footer />
         </>
       )}
-      {token && <div>CREATE SOMETHING HERE</div>}
+      {token && (
+        <>
+          <ProtectedHome />
+        </>
+      )}
     </>
   );
 };

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useAuth } from "../store/auth";
-import Login from "./Login";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -54,7 +54,7 @@ const Navbar = () => {
           transition={{ duration: 0.8, staggerChildren: 0.3 }}
           className="flex max-sm:hidden gap-3  "
         >
-          {["Home", "About", "FAQs", "Testimonials"].map((item, index) => (
+          {!isloggedin && ["Home", "About", "FAQs", "Testimonials"].map((item, index) => (
             <motion.div
               className="tracking-wider uppercase cursor-pointer"
               transition={{ staggerChildren: 0.4 }}
@@ -79,6 +79,7 @@ const Navbar = () => {
                 localStorage.removeItem("accessToken");
                 localStorage.removeItem("authUser");
                 localStorage.removeItem("authDetails");
+                toast.success("Logout Successfull");
               }}
             >
               LOGOUT

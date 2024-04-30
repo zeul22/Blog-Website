@@ -54,6 +54,7 @@ const Login = () => {
           localStorage.setItem("accessToken", data.data.accessToken);
           localStorage.setItem("authUser", data.data.user._id.trim());
           setData(default_data);
+          toast.success("Login Successfull");
           navigate("/");
         })
         .catch((error) => {
